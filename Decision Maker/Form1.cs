@@ -24,7 +24,7 @@ namespace Decision_Maker
 
 
         int Mode_nr = 1;
-
+       
         
 
         private void button1_Click(object sender, EventArgs e)
@@ -73,6 +73,18 @@ namespace Decision_Maker
 
         private void button3_Click_1(object sender, EventArgs e)
         {
+            History.Text = null;
+        }
+
+        private void Undo_Button_Click(object sender, EventArgs e)
+        {
+            var historyLines = History.Text.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+
+            List<string> linesList = new List<string>(Input.Lines);
+            linesList.AddRange(historyLines);
+
+            Input.Lines = linesList.ToArray();
+
             History.Text = null;
         }
     }
